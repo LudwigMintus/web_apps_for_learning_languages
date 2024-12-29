@@ -8,6 +8,6 @@ export function addUser(entity: any): Promise<any> {
     return addUserRepo(entity);
 }
 
-export function deleteUser(entity: any): Promise<any> {
+export function deleteUser(entity: object): Promise<object> {
     return deleteUserRepo(entity);
 }

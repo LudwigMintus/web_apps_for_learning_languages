@@ -8,6 +8,6 @@ export function addCard(entity: any): Promise<any> {
     return addCardRepo(entity);
 }
 
-export function deleteCard(entity: any): Promise<any> {
+export function deleteCard(entity: object): Promise<object> {
     return deleteCardRepo(entity);
 }

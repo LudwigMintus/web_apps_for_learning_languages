@@ -25,9 +25,9 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        const card = await deleteCard(req.body);
+        const card = await deleteCard({"_id": req.params.id});
         res.send(card);
     } catch (error) {
         console.log(error)

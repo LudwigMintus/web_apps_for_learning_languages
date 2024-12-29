@@ -14,13 +14,17 @@ const cardSchema = new Schema({
         enum: LANGUAGES,
         required: true
     },
-    transaliton: {
+    translation: {
         type: String,
         required: true
     },
     example: {
         type: String,
-        required: true
+        required: false
+    },
+    synonims: {
+        type: Array<string>,
+        required: false
     }
 })
 

@@ -1,6 +1,7 @@
 enum ROUTES {
     User = '/users',
-    Card = '/cards'
+    Card = '/cards',
+    Collection = '/collection'
 }
 
 export default ROUTES;

@@ -25,9 +25,9 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
-        const card = await deleteUser(req.body);
+        const card = await deleteUser({"_id": req.params.id});
         res.send(card);
     } catch (error) {
         console.log(error)
