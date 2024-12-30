@@ -1,24 +1,22 @@
-import { getUsers, addUser, deleteUser } from '../services/user.service';
-import User from '../models/user.model'
+import UserService from '../services/user.service';
+import { IUserDto } from '../interfaces/user.interface';
+import { Router } from 'express';
 
-const express = require('express');
-const router = express.Router();
+const router = Router();
+const service = new UserService();
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
     try {
-        const users = await getUsers(req);
-        res.send(users);
+        service.getUsers(req).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
     try {
-        const card = new User(req.body);
-        await addUser(card);
-        res.send(card);
+        service.addUser(req.body as IUserDto).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
@@ -27,8 +25,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     try {
-        const card = await deleteUser({"_id": req.params.id});
-        res.send(card);
+        service.deleteUser({"_id": req.params.id}).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);

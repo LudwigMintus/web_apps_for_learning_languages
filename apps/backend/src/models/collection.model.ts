@@ -1,19 +1,21 @@
-import Card from "./card.model";
-
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import { Schema, Types, model } from "mongoose";
 
 const collectionSchema = new Schema({
     types: {
         type: Array<string>,
         required: true
     },
+    users: {
+        type: [{type: Types.ObjectId, ref: 'User'}],
+        required: true,
+        selected: false
+    },
     cards: {
-        type: Array<typeof Card>,
+        type: [{type: Types.ObjectId, ref: 'Card'}],
         required: true
     }
 })
 
-const Collection = mongoose.model("Collection", collectionSchema);
+const Collection = model("Collection", collectionSchema);
 
 export default Collection;

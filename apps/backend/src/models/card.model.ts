@@ -1,9 +1,12 @@
 import { LANGUAGES } from './models.const';
+import { Schema, model, Types } from "mongoose";
+import { ICard } from '../interfaces/card.interface';
 
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
-const cardSchema = new Schema({
+const cardSchema = new Schema<ICard>({
+    _id: {
+        type: Types.ObjectId,
+        required: true
+    },
     message: {
         type: String,
         required: true,
@@ -28,6 +31,6 @@ const cardSchema = new Schema({
     }
 })
 
-const Card = mongoose.model("Card", cardSchema);
+const Card = model<ICard>("Card", cardSchema);
 
 export default Card;

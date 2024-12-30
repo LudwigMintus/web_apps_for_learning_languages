@@ -1,8 +1,8 @@
 import { getCollections, addCollection, deleteCollection } from '../services/collection.service';
 import Collection from '../models/card.model'
+import { Router } from 'express';
 
-const express = require('express');
-const router = express.Router();
+const router = Router();
 
 router.get('/', async (req, res) => {
     try {
@@ -24,6 +24,15 @@ router.post('/', async (req, res) => {
         res.sendStatus(500);
     }
 });
+
+router.post('/:collection_id/user/:user_id', (req, res) => {
+    try {
+        res.send("true")
+    } catch (error) {
+        console.log(error)
+        res.sendStatus(500);
+    }
+})
 
 router.delete('/', async (req, res) => {
     try {

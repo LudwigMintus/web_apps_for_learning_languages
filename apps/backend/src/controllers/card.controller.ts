@@ -1,8 +1,8 @@
 import { getCards, addCard, deleteCard } from '../services/card.service';
 import Card from '../models/card.model'
+import { Router } from 'express';
 
-const express = require('express');
-const router = express.Router();
+const router = Router();
 
 router.get('/', async (req, res) => {
     try {
