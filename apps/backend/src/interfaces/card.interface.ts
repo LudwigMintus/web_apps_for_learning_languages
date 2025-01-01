@@ -6,14 +6,15 @@ export interface ICard {
     language: string,
     translation: string,
     example?: string,
-    synonims?: typeof Array<string>
+    synonims?: typeof Array<string>,
+    __v?: number;
 }
 
 export interface ICardDto {
-    _id: typeof Types.ObjectId;
+    id?: typeof Types.ObjectId;
     message: string,
     language: string,
     translation: string,
     example?: string,
-    synonims?: Array<string>
+    synonims?: typeof Array<string>
 }

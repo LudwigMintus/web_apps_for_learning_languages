@@ -1,11 +1,11 @@
 import { LANGUAGES } from './models.const';
-import { Schema, model, Types } from "mongoose";
+import { Schema, model } from "mongoose";
 import { ICard } from '../interfaces/card.interface';
 
 const cardSchema = new Schema<ICard>({
-    _id: {
-        type: Types.ObjectId,
-        required: true
+    __v: { 
+        type: Number, 
+        select: false 
     },
     message: {
         type: String,

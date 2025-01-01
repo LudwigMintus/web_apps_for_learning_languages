@@ -1,13 +1,18 @@
+import { from, Observable } from 'rxjs';
 import Collection from '../models/collection.model';
 
-export async function getCollections(req: any): Promise<any> {
-    return await Collection.find(req.query.message ? {message: req.query.message} : {});
-}
+export default class CollectionRepository {
 
-export async function addCollection(entity: any): Promise<void> {
-    return await entity.save();
-}
+    getCollections(req: any): Observable<any> {
+        return from(Collection.find(req.query.message ? {message: req.query.message} : {}));
+    }
+    
+    addCollection(entity: any): Observable<any> {
+        return from(entity.save());
+    }
+    
+    deleteCollection(entity: any): Observable<any> {
+        return from(Collection.deleteOne(entity));
+    }
 
-export async function deleteCollection(entity: any): Promise<any> {
-    return await Collection.deleteOne(entity);
 }

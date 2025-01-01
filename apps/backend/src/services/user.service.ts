@@ -7,21 +7,21 @@ import { map, Observable } from 'rxjs';
 export default class UserService {
 
     mapper = new UserMapper();
-    repository = new UserRepository();
+    repo = new UserRepository();
 
     getUsers(req: any): Observable<IUserDto[]> {
-        return this.repository.getUsers(req).pipe(map(value => {
+        return this.repo.getUsers(req).pipe(map(value => {
             return value.map(value => this.mapper.mapTo(value))
-        }))
+        }));
     }
 
     addUser(entity: IUserDto): Observable<IUserDto> {
         const addedEntity = new User(this.mapper.mapFrom(entity));
-        return this.repository.addUser(addedEntity).pipe(map(value => this.mapper.mapTo(value)));
+        return this.repo.addUser(addedEntity).pipe(map(value => this.mapper.mapTo(value)));
     }
 
     deleteUser(entity: object): Observable<object> {
-        return this.repository.deleteUser(entity);
+        return this.repo.deleteUser(entity);
     }
 
 }

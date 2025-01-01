@@ -1,34 +1,30 @@
-import { getCards, addCard, deleteCard } from '../services/card.service';
-import Card from '../models/card.model'
+import CardService from '../services/card.service';
 import { Router } from 'express';
 
 const router = Router();
+const service = new CardService();
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
     try {
-        const cards = await getCards(req);
-        res.send(cards);
+        service.getCards(req).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
     try {
-        const card = new Card(req.body);
-        await addCard(card);
-        res.send(card);
+        service.addCard(req.body).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', (req, res) => {
     try {
-        const card = await deleteCard({"_id": req.params.id});
-        res.send(card);
+        service.deleteCard({"_id": req.params.id}).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);

@@ -1,13 +1,26 @@
-import { getCollections as getCollectionRepo, addCollection as addCollectionRepo, deleteCollection as deleteCollectionRepo } from "../repositories/collection.repository";
+import { map, Observable } from "rxjs";
+import CollectionRepository from "../repositories/collection.repository";
+import CollectionMapper from "../mappers/collection.mapper";
+import Collection from "../models/collection.model";
 
-export function getCollections(req: any): Promise<any> {
-    return getCollectionRepo(req);
-}
+export default class CollectionService {
 
-export function addCollection(entity: any): Promise<any> {
-    return addCollectionRepo(entity);
-}
+    mapper = new CollectionMapper()
+    repo = new CollectionRepository();
 
-export function deleteCollection(entity: any): Promise<any> {
-    return deleteCollectionRepo(entity);
+    getCollections(req: any): Observable<any> {
+        return this.repo.getCollections(req).pipe(map(value => {
+            return value.map(value => this.mapper.mapTo(value))
+        }));
+    }
+    
+    addCollection(entity: any): Observable<any> {
+        const addedEntity = new Collection(this.mapper.mapFrom(entity));
+        return this.repo.addCollection(addedEntity).pipe(map(value => this.mapper.mapTo(value)));
+    }
+    
+    deleteCollection(entity: any): Observable<any> {
+        return this.repo.deleteCollection(entity);
+    }
+
 }

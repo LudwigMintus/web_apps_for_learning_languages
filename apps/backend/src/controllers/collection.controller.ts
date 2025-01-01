@@ -1,43 +1,30 @@
-import { getCollections, addCollection, deleteCollection } from '../services/collection.service';
-import Collection from '../models/card.model'
+import CollectionService from '../services/collection.service';
 import { Router } from 'express';
 
 const router = Router();
+const service = new CollectionService();
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
     try {
-        const collections = await getCollections(req);
-        res.send(collections);
+        service.getCollections(req).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
     try {
-        const collection = new Collection(req.body);
-        await addCollection(collection);
-        res.send(collection);
+        service.addCollection(req.body).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
     }
 });
 
-router.post('/:collection_id/user/:user_id', (req, res) => {
+router.delete('/:id', (req, res) => {
     try {
-        res.send("true")
-    } catch (error) {
-        console.log(error)
-        res.sendStatus(500);
-    }
-})
-
-router.delete('/', async (req, res) => {
-    try {
-        const collection = await deleteCollection(req.body);
-        res.send(collection);
+        service.deleteCollection({"_id": req.params.id}).subscribe(resp => res.send(resp));
     } catch (error) {
         console.log(error)
         res.sendStatus(500);
