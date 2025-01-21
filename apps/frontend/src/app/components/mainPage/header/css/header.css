@@ -1,0 +1,74 @@
+.header {
+  display: flex;
+  justify-content: space-between; /* Лого по центру, кнопки справа */
+  align-items: center; /* Центрируем элементы по вертикали */
+  padding: 1rem 5rem;
+  height: 150px; /* Высота шапки */
+  box-sizing: border-box;
+}
+
+.logo {
+  flex: 1; /* Логотип занимает всё доступное пространство слева */
+  display: flex;
+  padding-left: 15rem;
+  flex-direction: column;
+  align-items: center; /* Центрируем текст логотипа */
+  justify-content: center;
+  text-align: center;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  padding: 0.5rem 1.5rem; /* Внутренние отступы кнопок */
+  border: none;
+  border-radius: 30px; /* Скругленные углы */
+  font-size: 1rem;
+  height: 60px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  background-color: rgb(11, 115, 114);
+  color: #ffffff;
+  box-shadow: 5px 5px 0 rgb(29, 30, 78);
+}
+
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем текст логотипа */
+  text-align: center;
+  font-family: 'Roboto Condensed', sans-serif; /* Шрифт для логотипа */
+  color: rgb(29, 30, 78); /* Тёмно-синий цвет */
+}
+
+.logo h1 {
+  font-size: 3rem; /* Размер шрифта */
+  font-weight: 700; /* Толщина шрифта */
+  letter-spacing: 2px; /* Интервалы между буквами */
+  text-transform: uppercase; /* Преобразование текста в заглавные */
+  color: rgb(29, 30, 78); /* Цвет */
+  text-shadow: 1px 1px 0 #ffffff, 2px 2px 0 rgba(0, 0, 0, 0.1); /* Эффект объёма */
+}
+
+.logo p {
+  margin: 0;
+  font-size: 1rem;
+  font-family: 'PT Sans', sans-serif; /* Подзаголовок с другим шрифтом */
+  color: rgb(29, 30, 78); /* Цвет */
+  text-transform: uppercase; /* Преобразование текста в заглавные */
+  letter-spacing: 1px; /* Интервал между буквами */
+}
+
+
+.button:hover {
+  transform: scale(1.05);
+  background-color: rgb(29, 30, 78);
+  color: #ffffff;
+  box-shadow: 5px 5px 0 rgb(11, 115, 114);
+}

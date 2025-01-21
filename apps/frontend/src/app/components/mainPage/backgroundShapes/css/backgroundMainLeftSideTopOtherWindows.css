@@ -1,0 +1,11 @@
+.background-shapes-main-left-sidetop-other-windows {
+  position: fixed; /* Закрепляем элемент на экране */
+  top: 0; /* Прижимаем к нижнему краю */
+  left: 0; /* Выравниваем по левому краю */
+  width: 100%; /* Покрываем всю ширину */
+  height: 80%; /* Сохраняем пропорции */
+  background-image: url('../../../../../public/objectImage/backgroundMainLeftSideTopOtherWindows.png');
+  background-size: contain; /* Изображение сохраняет пропорции и вписывается в блок */
+  background-repeat: no-repeat; /* Избегаем повторения */
+  z-index: -1; /* Отправляем элемент на задний план */
+}
