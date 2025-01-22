@@ -1,0 +1,106 @@
+/* Контейнер для всего компонента */
+.memory-test-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+/* Общий стиль для всех карточек */
+.card {
+  width: 20%;
+  height: 500px;
+  border-radius: 15px;
+  border: 2px solid rgb(29, 30, 78);
+  box-shadow: 5px 5px 0 rgb(11, 115, 114);
+  background-color: #e0f7f9;
+}
+
+/* Центральная карточка */
+.card-center {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.card-center .image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Кнопки */
+.button-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgb(29, 30, 78);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 7px 7px 0 rgb(11, 115, 114);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .memory-test-container {
+    flex-direction: column;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}/* Переворот карточки */
+.card-center.flipped {
+  transform: rotateY(180deg);
+  transition: transform 0.6s ease;
+}
+
+/* Анимация перемещения карточки */
+.card-center.moved {
+  opacity: 0;
+  transform: translateX(200%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.card-left.moved-card,
+.card-right.moved-card {
+  animation: appear 0.5s forwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+

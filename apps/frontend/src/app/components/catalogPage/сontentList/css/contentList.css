@@ -1,0 +1,66 @@
+.content-list {
+  margin: 2rem auto;
+  width: 60%; /* Более адаптивная ширина */
+  height: 400px; /* Ограничение по высоте */
+  overflow-y: auto; /* Вертикальная прокрутка */
+  overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+  border: 0;
+  border-radius: 10px;
+  padding: 1rem;
+  position: relative;
+  direction: rtl; /* Перемещаем ползунок влево */
+}
+
+/* Стили для скроллбара */
+.content-list::-webkit-scrollbar {
+  width: 8px; /* Ширина полосы прокрутки */
+}
+
+/* Настройка ползунка */
+.content-list::-webkit-scrollbar-thumb {
+  background: url('../../../../../public/objectImage/slider.png'); /* Ставим изображение */
+  background-size: contain; /* Изображение растягивается, чтобы заполнить ползунок */
+  background-repeat: no-repeat;
+  border-radius: 10px; /* Скругленные края */
+}
+
+.content-list::-webkit-scrollbar-track {
+  background-color: rgba(29, 30, 78, 0.1); /* Цвет заднего фона полосы */
+  border-radius: 10px; /* Скругленные края */
+}
+
+/* Возвращаем текст на место, чтобы не был зеркально отображён */
+.content-item {
+  text-align: left; /* Выравниваем текст по левому краю */
+  direction: ltr; /* Сбрасываем направление внутри */
+  margin-bottom: 1rem;
+}
+
+.content-item h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: rgb(29, 30, 78);
+  font-weight: bold;
+}
+
+.content-item p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: rgb(29, 30, 78);
+}
+
+/* Адаптивная настройка для маленьких экранов */
+@media (max-width: 768px) {
+  .content-list {
+    width: 95%;
+    height: auto; /* Высота адаптируется к содержимому */
+  }
+
+  .content-item h3 {
+    font-size: 1rem;
+  }
+
+  .content-item p {
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,11 @@
+.background-shapes-left-side-bottom {
+  position: fixed; /* Закрепляем элемент на экране */
+  bottom: 0; /* Прижимаем к нижнему краю */
+  left: 0; /* Выравниваем по левому краю */
+  width: 100%; /* Покрываем всю ширину */
+  height: 50%; /* Сохраняем пропорции */
+  background-image: url('../../../../../public/objectImage/backgroundMainLeftSideBottom.png');
+  background-size: contain; /* Изображение сохраняет пропорции и вписывается в блок */
+  background-repeat: no-repeat; /* Избегаем повторения */
+  z-index: 0; /* Отправляем элемент на задний план */
+}

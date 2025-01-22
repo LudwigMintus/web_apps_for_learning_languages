@@ -1,14 +1,16 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.css';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import MainPage from './components/mainPage/MainPage';
+import CatalogPage from './components/catalogPage/СatalogPage';
+import CatalogCardPage from './components/catalogCardPage/СatalogCardPage';
 
-import NxWelcome from './nx-welcome';
-
-export function App() {
+const App = () => {
   return (
-    <div>
-      <NxWelcome title="frontend" />
-    </div>
+    <Router>
+      <AppRoutes />
+    </Router>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,24 @@
+.background-shapes .left-shape {
+  position: absolute;
+  bottom: 0; /* Прижимаем к нижнему краю */
+  left: 0; /* Выравниваем по левому краю */
+  width: 50%; /* Покрываем всю ширину */
+  height: 100%; /* Сохраняем пропорции */
+  background-image: url('../../../../../public/objectImage/backgroundMainLeftSideTop.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.background-shapes .right-shape {
+  position: absolute;
+  transform: scaleX(-1);
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 50%;
+  background-image: url('../../../../../public/objectImage/backgroundMainLeftSideBottom.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: -1;
+}

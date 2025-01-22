@@ -1,0 +1,78 @@
+.search-panel {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Расстояние между элементами */
+  margin: 2rem auto;
+  width: 60%;
+  justify-content: flex-start; /* Выравниваем элементы в одну линию */
+  flex-wrap: wrap; /* Добавляем возможность переноса элементов */
+}
+
+.search-wrapper {
+  position: relative;
+  flex: 1; /* Поле поиска занимает всё доступное пространство */
+  min-width: 200px; /* Минимальная ширина для поля */
+}
+
+.search-input {
+  width: 100%; /* Поле поиска растягивается на всю доступную ширину */
+  padding: 0.8rem 1rem;
+  border-radius: 25px;
+  border: 2px solid rgb(29, 30, 78);
+  font-size: 1rem;
+  padding-right: 40px; /* Отступ для иконки справа */
+  box-sizing: border-box; /* Учитываем padding */
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem; /* Иконка внутри поля */
+  transform: translateY(-50%);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0; /* Убираем дополнительные отступы */
+}
+
+.search-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.add-button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  border: 2px solid rgb(29, 30, 78);
+  color: rgb(29, 30, 78);
+  font-size: 1rem;
+  font-weight: bold;
+  background: #f1f1f1;
+  box-shadow: 5px 5px 0 rgb(29, 30, 78);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap; /* Убираем перенос текста на кнопке */
+}
+
+/* Анимация при наведении */
+.add-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 7px 7px 0 rgb(11, 115, 114);
+}
+
+/* Адаптивная настройка для маленьких экранов */
+@media (max-width: 768px) {
+  .search-panel {
+    flex-direction: column; /* Элементы располагаются вертикально */
+    align-items: stretch; /* Растягиваем элементы на всю ширину */
+  }
+
+  .add-button {
+    width: 100%; /* Кнопка занимает всю ширину */
+    margin-top: 1rem; /* Отступ сверху для кнопки */
+  }
+
+  .search-input {
+    width: 100%; /* Поле поиска тоже растягивается */
+  }
+}
