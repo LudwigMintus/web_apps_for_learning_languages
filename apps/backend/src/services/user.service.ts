@@ -20,6 +20,10 @@ export default class UserService {
         return this.repo.addUser(addedEntity).pipe(map(value => this.mapper.mapTo(value)));
     }
 
+    authUser(entity: any): Observable<IUserDto> {
+        return this.repo.authUser(entity);
+    }
+
     deleteUser(entity: object): Observable<object> {
         return this.repo.deleteUser(entity);
     }
