@@ -9,7 +9,7 @@
 }
 
 /* Общий стиль для всех карточек */
-.card {
+.memory-test-card {
   width: 20%;
   height: 500px;
   border-radius: 15px;
@@ -19,7 +19,7 @@
 }
 
 /* Центральная карточка */
-.card-center {
+.memory-test-card-center {
   display: flex;
   width: 50%;
   align-items: center;
@@ -27,21 +27,21 @@
   background-color: #ffffff;
 }
 
-.card-center .image {
+.memory-test-card-center .memory-test-image {
   width: 100%;
   height: auto;
   border-radius: 10px;
 }
 
 /* Кнопки */
-.button-container {
+.memory-test-button-container {
   display: flex;
   gap: 1rem;
   justify-content: center;
   width: 100%;
 }
 
-.button {
+.memory-test-button {
   padding: 0.8rem 2rem;
   font-size: 1rem;
   font-weight: bold;
@@ -54,7 +54,7 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.button:hover {
+.memory-test-button:hover {
   transform: translateY(-3px);
   box-shadow: 7px 7px 0 rgb(11, 115, 114);
 }
@@ -65,30 +65,32 @@
     flex-direction: column;
   }
 
-  .card {
+  .memory-test-card {
     width: 90%;
     max-width: 300px;
   }
 
-  .button-container {
+  .memory-test-button-container {
     flex-direction: column;
     gap: 0.5rem;
   }
-}/* Переворот карточки */
-.card-center.flipped {
+}
+
+/* Переворот карточки */
+.memory-test-card-center.flipped {
   transform: rotateY(180deg);
   transition: transform 0.6s ease;
 }
 
 /* Анимация перемещения карточки */
-.card-center.moved {
+.memory-test-card-center.moved {
   opacity: 0;
   transform: translateX(200%);
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-.card-left.moved-card,
-.card-right.moved-card {
+.memory-test-card-left.moved-card,
+.memory-test-card-right.moved-card {
   animation: appear 0.5s forwards;
 }
 
@@ -102,5 +104,3 @@
     transform: scale(1);
   }
 }
-
-

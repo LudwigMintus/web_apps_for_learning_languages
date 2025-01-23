@@ -1,19 +1,20 @@
-.sidebar {
-  width: 40%; /* Ширина 50% экрана */
-  max-width: none; /* Убираем ограничения по ширине */
+/* Основной контейнер */
+.sidebar-container {
+  width: 40%;
+  max-width: none;
   padding: 1rem;
   border-radius: 15px;
-  height: 100%; /* Растягиваем по высоте */
-  overflow-y: auto; /* Добавляем прокрутку */
+  height: 100%;
+  overflow-y: auto;
 }
 
-.buttons-wrapper {
+.sidebar-buttons-wrapper {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.action-button {
+.sidebar-action-button {
   flex: 1;
   padding: 0.5rem 1rem;
   border: none;
@@ -26,17 +27,17 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.action-button:hover {
+.sidebar-action-button:hover {
   transform: translateY(-3px);
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.search-wrapper {
+.sidebar-search-wrapper {
   position: relative;
   margin-bottom: 1rem;
 }
 
-.search-input-sidebar {
+.sidebar-search-input {
   width: 80%;
   padding: 0.8rem 1rem;
   border-radius: 25px;
@@ -44,7 +45,7 @@
   font-size: 1rem;
 }
 
-.search-icon {
+.sidebar-search-icon {
   position: absolute;
   top: 50%;
   right: 1rem;
@@ -52,21 +53,20 @@
   cursor: pointer;
 }
 
-.list {
-  height: 500px; /* Ограничиваем высоту списка */
-  overflow-y: auto; /* Добавляем вертикальную прокрутку */
+.sidebar-list {
+  height: 500px;
+  overflow-y: auto;
   border-radius: 15px;
-  scrollbar-width: thin; /* CSS для настройки скроллбара */
-  border: 0;
+  scrollbar-width: thin;
   scrollbar-color: rgb(29, 30, 78) rgba(0, 0, 0, 0.1);
 }
 
-.scroll-panel {
+.sidebar-scroll-panel {
   max-height: 100%;
   overflow-y: auto;
 }
 
-.list-item {
+.sidebar-list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,17 +78,17 @@
   transition: background-color 0.3s ease;
 }
 
-.list-item:hover {
+.sidebar-list-item:hover {
   background-color: rgba(29, 30, 78, 0.1);
 }
 
-.list-item-title {
+.sidebar-list-item-title {
   font-size: 1rem;
   font-weight: bold;
   color: rgb(29, 30, 78);
 }
 
-.list-item-button {
+.sidebar-list-item-button {
   background-color: rgb(11, 115, 114);
   color: #ffffff;
   padding: 0.5rem 1rem;
@@ -98,30 +98,29 @@
 }
 
 /* Настройка скроллбара */
-.list::-webkit-scrollbar {
-  width: 8px; /* Ширина полосы прокрутки */
+.sidebar-list::-webkit-scrollbar {
+  width: 8px;
 }
 
-
-.list::-webkit-scrollbar-track {
+.sidebar-list::-webkit-scrollbar-track {
   border-radius: 10px;
-  background: transparent; /* Делаем трек (поле) полностью прозрачным */
+  background: transparent;
 }
 
-.list::-webkit-scrollbar-thumb {
-  background-color: rgb(29, 30, 78); /* Цвет полосы прокрутки */
+.sidebar-list::-webkit-scrollbar-thumb {
+  background-color: rgb(29, 30, 78);
   border-radius: 10px;
-  border: 2px solid rgba(0, 0, 0, 0.1); /* Граница полосы */
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
-  .sidebar {
-    width: 100%; /* На маленьких экранах sidebar занимает всю ширину */
+  .sidebar-container {
+    width: 100%;
     max-width: none;
   }
 
-  .buttons-wrapper {
-    flex-direction: column; /* Перенос кнопок в колонку */
+  .sidebar-buttons-wrapper {
+    flex-direction: column;
     gap: 0.5rem;
   }
 }

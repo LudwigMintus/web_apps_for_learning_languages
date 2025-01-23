@@ -1,35 +1,30 @@
+// GameCard.tsx
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MemoryTest from "./MemoryTest";
 import BackgroundShapes from "../catalogPage/backgroundShapes/BackgroundShapes";
 import Header from "../catalogPage/header/Header";
+import { getCards } from "../../api/apiService";
 
 const GameCard = () => {
-  const { catalogId, cardId } = useParams(); // Получение параметров из маршрута
-  const [cards, setCards] = useState([]); // Массив карточек
-  const [error, setError] = useState(null); // Состояние ошибки
-  const [loading, setLoading] = useState(true); // Состояние загрузки
-  const [initialIndex, setInitialIndex] = useState(0); // Индекс начальной карточки
+  const { catalogId, cardId } = useParams<{ catalogId: string; cardId: string }>();
+  const [cards, setCards] = useState([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [initialIndex, setInitialIndex] = useState(0);
 
   useEffect(() => {
     if (catalogId) {
-      fetch(`/api/catalogs/${catalogId}/cards`)
-        .then((response) => {
-          if (!response.ok) throw new Error("Ошибка загрузки карточек");
-          return response.json();
-        })
+      getCards() // Используем API функцию для получения карточек
         .then((data) => {
-          setCards(data);
+          const filteredCards = data.filter((card) => card.catalogId === catalogId);
+          setCards(filteredCards);
 
-          // Устанавливаем начальный индекс на основе cardId
-          const startIndex = data.findIndex((card) => card.id === cardId);
+          const startIndex = filteredCards.findIndex((card) => card.id === cardId);
           setInitialIndex(startIndex !== -1 ? startIndex : 0);
-          setLoading(false);
         })
-        .catch((error) => {
-          setError(error.message);
-          setLoading(false);
-        });
+        .catch((error) => setError(error.message))
+        .finally(() => setLoading(false));
     } else {
       setError("Отсутствует параметр каталога");
       setLoading(false);

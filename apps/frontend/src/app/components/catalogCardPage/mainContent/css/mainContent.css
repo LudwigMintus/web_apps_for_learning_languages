@@ -1,13 +1,15 @@
-.main-component {
-  max-width: 40%; /* Ограничение на ширину */
+/* Основной контейнер */
+.main-content-component {
+  max-width: 40%;
   padding: 2rem;
   border-radius: 15px;
   background-color: #f9f9f9;
   border: 2px solid rgb(29, 30, 78);
-  overflow: hidden; /* Убираем лишние элементы за пределами блока */
+  overflow: hidden;
 }
 
-.input-field {
+/* Поля ввода */
+.main-content-input-field {
   width: 100%;
   padding: 0.8rem 1rem;
   border-radius: 25px;
@@ -16,14 +18,15 @@
   font-size: 1rem;
 }
 
-.tags {
+/* Теги */
+.main-content-tags {
   display: flex;
-  flex-wrap: wrap; /* Обеспечиваем перенос тегов */
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.tag-button {
+.main-content-tag-button {
   padding: 0.5rem 1rem;
   border-radius: 25px;
   border: none;
@@ -33,41 +36,43 @@
   font-size: 1rem;
 }
 
-.module-list {
-  max-height: 300px; /* Устанавливаем высоту списка */
-  overflow-y: auto; /* Включаем вертикальную прокрутку */
-  scrollbar-width: thin; /* Тонкий скроллбар для Firefox */
-  scrollbar-color: rgb(29, 30, 78) transparent; /* Цвет ползунка */
+/* Список модулей */
+.main-content-module-list {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(29, 30, 78) transparent;
 }
 
-.module-list::-webkit-scrollbar {
-  width: 8px; /* Ширина скроллбара */
+.main-content-module-list::-webkit-scrollbar {
+  width: 8px;
 }
 
-.module-list::-webkit-scrollbar-track {
-  background: transparent; /* Трек прозрачный */
+.main-content-module-list::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.module-list::-webkit-scrollbar-thumb {
-  background-color: rgb(29, 30, 78); /* Ползунок скроллбара */
-  border-radius: 10px; /* Скругленные углы */
+.main-content-module-list::-webkit-scrollbar-thumb {
+  background-color: rgb(29, 30, 78);
+  border-radius: 10px;
 }
 
-.module-item {
+/* Элементы списка */
+.main-content-module-item {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.module-input {
+.main-content-module-input {
   flex: 1;
   padding: 0.8rem 1rem;
   border-radius: 25px;
   border: 2px solid rgb(29, 30, 78);
 }
 
-.module-action {
+.main-content-module-action {
   padding: 0.5rem;
   border-radius: 50%;
   border: 2px solid rgb(29, 30, 78);
@@ -77,21 +82,21 @@
 
 /* Адаптивные стили */
 @media (max-width: 768px) {
-  .main-component {
-    max-width: 95%; /* Увеличиваем ширину на маленьких экранах */
+  .main-content-component {
+    max-width: 95%;
   }
 
-  .tags {
-    flex-direction: column; /* Переводим теги в колонку */
+  .main-content-tags {
+    flex-direction: column;
     gap: 0.5rem;
   }
 
-  .module-item {
-    flex-direction: column; /* Вертикальное расположение элементов */
+  .main-content-module-item {
+    flex-direction: column;
     align-items: flex-start;
   }
 
-  .module-input {
+  .main-content-module-input {
     width: 100%;
   }
 }

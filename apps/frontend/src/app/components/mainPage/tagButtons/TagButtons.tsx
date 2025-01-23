@@ -6,13 +6,13 @@ const TagButtons = () => {
   const navigate = useNavigate();
 
   const handleTagClick = (tag: string) => {
-    navigate(`/catalog?q=${encodeURIComponent(tag)}`);
+    navigate(`/catalogs?q=${encodeURIComponent(tag)}`);
   };
 
   return (
     <div className="tag-buttons">
-      <button className="tag-button" onClick={() => handleTagClick('АУ')}>
-        я лох
+      <button className="tag-button" onClick={() => handleTagClick('Французский')}>
+        Французский
       </button>
       <button className="tag-button" onClick={() => handleTagClick('Английский')}>
         Английский
@@ -20,14 +20,14 @@ const TagButtons = () => {
       <button className="tag-button" onClick={() => handleTagClick('Программирование')}>
         Программирование
       </button>
-      <button className="tag-button" onClick={() => handleTagClick('ЫЫ')}>
-        Похуй
+      <button className="tag-button" onClick={() => handleTagClick('Математика')}>
+        Математика
       </button>
-      <button className="tag-button" onClick={() => handleTagClick('ЫЫ')}>
-        Нахуй
+      <button className="tag-button" onClick={() => handleTagClick('История')}>
+        История
       </button>
-      <button className="tag-button" onClick={() => handleTagClick('ЫЫ')}>
-        Зоебись
+      <button className="tag-button" onClick={() => handleTagClick('Наука')}>
+        Наука
       </button>
     </div>
   );

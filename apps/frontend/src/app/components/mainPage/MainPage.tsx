@@ -13,7 +13,7 @@ const MainPage = () => {
 
   const handleSearch = (searchQuery) => {
     setQuery(searchQuery);
-    navigate(`/catalog?q=${encodeURIComponent(searchQuery)}`);
+    navigate(`/catalogs?q=${encodeURIComponent(searchQuery)}`);
   };
 
   return (

@@ -1,7 +1,8 @@
 // authApi.ts
+const BASE_URL = 'http://localhost:3000'; // Убедитесь, что базовый URL совпадает с вашим
 export const login = async (email: string, password: string) => {
   try {
-    const response = await fetch('/api/auth/login', {
+    const response = await fetch('/auth', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -27,7 +28,7 @@ export const register = async (
   repeatedPassword: string
 ) => {
   try {
-    const response = await fetch('/api/auth/register', {
+    const response = await fetch('/reg', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -8,7 +8,6 @@ const Header = () => {
   const handleNavigate = (path) => {
     navigate(path);
   };
-
   return (
     <header className="header">
       <div className="logo">

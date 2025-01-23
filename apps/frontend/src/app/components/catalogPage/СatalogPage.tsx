@@ -1,9 +1,11 @@
+// CatalogPage.tsx
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import BackgroundShapes from "./backgroundShapes/BackgroundShapes";
 import Header from "./header/Header";
 import SearchBar from "./searchBar/SearchBar";
 import ContentList from "./сontentList/ContentList";
+import { getCollections } from "../../api/apiService";
 
 const CatalogPage = () => {
   const location = useLocation();
@@ -17,14 +19,13 @@ const CatalogPage = () => {
     setQuery(searchQuery);
 
     if (searchQuery) {
-      fetch(`/api/catalogs?search=${encodeURIComponent(searchQuery)}`)
-        .then((response) => response.json())
+      getCollections() // Используем API функцию
         .then((data) => setCatalogs(data))
         .catch((error) => console.error("Error fetching catalogs:", error));
     }
   }, [location.search]);
 
-  const handleSelectCatalog = (id) => {
+  const handleSelectCatalog = (id: string) => {
     navigate(`/catalogs/${id}`); // Навигация на динамический маршрут
   };
 
@@ -36,7 +37,6 @@ const CatalogPage = () => {
         initialQuery={query}
         onSearch={(newQuery) => {
           setQuery(newQuery);
-          // Перезагрузка данных
         }}
         onAddCatalog={() => console.log("Добавить каталог")}
       />

@@ -12,24 +12,20 @@ const AuthPage = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const notifyError = (message: string) => {
-    toast.error(message, {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+  const notifyError = (message) => {
+    toast.error(message, { position: 'top-right', autoClose: 3000 });
   };
 
-  const validateInputs = (): boolean => {
+  const notifySuccess = (message) => {
+    toast.success(message, { position: 'top-right', autoClose: 3000 });
+  };
+
+  const validateInputs = () => {
     if (!formData.email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
       notifyError('Введите корректный email.');
       return false;
@@ -41,30 +37,28 @@ const AuthPage = () => {
     return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateInputs()) {
-      return;
-    }
+    if (!validateInputs()) return;
 
     setLoading(true);
     try {
-      const data = await login(formData.email, formData.password);
-      toast.success('Вы успешно вошли!', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      setTimeout(() => {
-        window.location.href = '/';
-      }, 5000);
-    } catch (err: any) {
-      notifyError('Ошибка входа. Проверьте введенные данные.');
-      console.error('Login error:', err);
+      // Отправляем запрос на вход
+      const response = await login(formData.email, formData.password);
+
+      if (response.token) {
+        // Сохраняем токен в localStorage
+        localStorage.setItem('token', response.token);
+
+        notifySuccess('Вы успешно вошли!');
+        setTimeout(() => {
+          window.location.href = '/'; // Перенаправляем на главную
+        }, 3000);
+      } else {
+        notifyError(response.message || 'Ошибка входа. Проверьте введенные данные.');
+      }
+    } catch (err) {
+      notifyError('Ошибка подключения. Попробуйте позже.');
     } finally {
       setLoading(false);
     }
@@ -74,52 +68,48 @@ const AuthPage = () => {
     <div className="auth-container">
       <ToastContainer />
       <div className="auth-card">
-        {/* Логотип */}
-        <div className="logo-container">
-          <div className="logo"></div>
+        <div className="auth-logo-container">
+          <div className="auth-logo"></div>
         </div>
-
-        {/* Кнопка входа через Google */}
-        <button className="google-login-button">
+        <button
+          className="auth-google-login-button"
+          onClick={() => notifyError('Google OAuth пока не настроен!')}
+        >
           <img
             src="../../../../../public/objectImage/Google__G__logo.png"
             alt="Google"
-            className="google-icon"
+            className="auth-google-icon"
           />
           Вход через аккаунт Google
         </button>
-
-        {/* Разделитель */}
-        <div className="divider">
+        <div className="auth-divider">
           <span>or</span>
         </div>
-
-        {/* Форма */}
         <form className="auth-form" onSubmit={handleSubmit}>
           <input
             type="text"
             name="email"
             placeholder="Username or email"
-            className="input"
+            className="auth-input"
             value={formData.email}
             onChange={handleChange}
             required
           />
-          <div className="input-wrapper">
+          <div>
             <input
               type="password"
               name="password"
               placeholder="Password"
-              className="input-with-icon"
+              className="auth-input-with-icon"
               value={formData.password}
               onChange={handleChange}
               required
             />
           </div>
-          <a href="/forgot-password" className="forgot-password">
+          <a href="/forgot-password" className="auth-forgot-password">
             Forgot Password?
           </a>
-          <button type="submit" className="login-button" disabled={loading}>
+          <button type="submit" className="auth-login-button" disabled={loading}>
             {loading ? 'Logging in...' : 'Log In'}
           </button>
         </form>
