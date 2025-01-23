@@ -18,9 +18,8 @@ router.get('/', (req, res) => {
 router.post('/reg', (req, res) => {
     try {
         service.addUser(req.body as IUserDto).subscribe(resp => {
-            const token = generateAccessToken(req.body.email);
+            const token = generateAccessToken(req.body);
             res.json(token);
-            // res.send(resp)
         });
     } catch (error) {
         console.log(error)
@@ -31,9 +30,8 @@ router.post('/reg', (req, res) => {
 router.post('/auth', (req, res) => {
     try {
         service.authUser(req.body as IUserDto).subscribe(resp => {
-            const token = generateAccessToken(req.body.email);
+            const token = generateAccessToken(req.body);
             res.json(token);
-            // res.send(resp)
         });
 
     } catch (error) {

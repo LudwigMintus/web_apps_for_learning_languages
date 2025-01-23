@@ -1,11 +1,10 @@
 import CardService from '../services/card.service';
 import { Router } from 'express';
-import { authenticateToken } from '../utils/token.service';
 
 const router = Router();
 const service = new CardService();
 
-router.get('/', authenticateToken, (req, res) => {
+router.get('/', (req, res) => {
     try {
         service.getCards(req).subscribe(resp => res.send(resp));
     } catch (error) {
@@ -14,7 +13,7 @@ router.get('/', authenticateToken, (req, res) => {
     }
 });
 
-router.post('/', authenticateToken, (req, res) => {
+router.post('/', (req, res) => {
     try {
         service.addCard(req.body).subscribe(resp => res.send(resp));
     } catch (error) {
@@ -23,7 +22,7 @@ router.post('/', authenticateToken, (req, res) => {
     }
 });
 
-router.delete('/:id', authenticateToken, (req, res) => {
+router.delete('/:id', (req, res) => {
     try {
         service.deleteCard({"_id": req.params.id}).subscribe(resp => res.send(resp));
     } catch (error) {
