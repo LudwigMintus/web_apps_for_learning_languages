@@ -17,7 +17,14 @@ Features:
 
 ### Frontend
 
-Zheny fill this please
+Implemented with:
+
+* React
+* TypeScript
+* React Router
+* CSS Modules
+* React Toastify
+* Fetch API
 
 ### Backend
 
