@@ -12,6 +12,10 @@ export default class UserRepository {
     addUser(entity: Document & IUser): Observable<IUser> {
         return from(entity.save());
     }
+
+    authUser(entity: any): Observable<any> {
+        return from(User.find({email: entity.email, password: entity.password}).lean().exec());
+    }
     
     deleteUser(entity: any): Observable<any> {
         return from(User.deleteOne(entity));

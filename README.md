@@ -15,13 +15,11 @@ Features:
 
 ## Technical detailes
 
-### First iteration
-
-#### Frontend
+### Frontend
 
 Zheny fill this please
 
-#### Backend
+### Backend
 
 Implemented with:
 
@@ -30,12 +28,12 @@ Implemented with:
 * ESlint
 * Jest
 
+### Database
+
+* MongoDB
+
 #### CI
 
 Implemented with:
 
 * GitHub Action
-
-### Second iteration
-
-TBD
